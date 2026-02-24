@@ -1,0 +1,22 @@
+{
+    "name": "@project-archi/shared-schemas",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "tsc --build",
+        "lint": "eslint ."
+    },
+    "dependencies": {
+        "zod": "^4.0.0"
+    },
+    "devDependencies": {
+        "@project-archi/tsconfig": "*",
+        "typescript": "^5.7.0",
+        "eslint": "^9.0.0",
+        "@eslint/js": "^9.0.0",
+        "typescript-eslint": "^8.0.0"
+    }
+}

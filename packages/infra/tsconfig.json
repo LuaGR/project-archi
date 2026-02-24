@@ -1,0 +1,16 @@
+{
+    "extends": "@project-archi/tsconfig/node.json",
+    "compilerOptions": {
+        "rootDir": ".",
+        "outDir": "./dist"
+    },
+    "include": [
+        "bin",
+        "lib"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "cdk.out"
+    ]
+}
