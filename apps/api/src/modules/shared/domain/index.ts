@@ -1,0 +1,1 @@
+export * from './expections/domain.error.js';
