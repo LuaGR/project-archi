@@ -1,3 +1,2 @@
-// Shared schemas will be added in Phase 1.
-// This barrel export ensures the package builds successfully.
-export { };
+export { apiErrorSchema } from './api-error.schema.js';
+export type { ApiError } from './api-error.schema.js';

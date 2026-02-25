@@ -13,7 +13,7 @@ graph TD
     User((User/Architect))
     
     subgraph Client_Layer [Client Side]
-        WebApp[Next.js 15 Web Application]
+        WebApp[Next.js 16 Web Application]
     end
     
     subgraph AWS_Cloud [AWS Cloud - Serverless]
@@ -46,7 +46,7 @@ graph TD
 
 ### B. Internal Containers
 
-* **Next.js 15 Web Application:** The frontend client utilizing React and TanStack Query v5 to manage state and render real-time Mermaid.js diagrams.
+* **Next.js 16 Web Application:** The frontend client utilizing React and TanStack Query v5 to manage state and render real-time Mermaid.js diagrams.
 * **AWS Lambda Orchestrator:** The Node.js 24.x serverless backend running LangGraph.js. It manages stateful execution loops, handles data fetching, and validates AI outputs.
 * **AWS Secrets Manager:** A secure vault used by the Lambda Orchestrator to retrieve API keys for Supabase and Gemini without exposing them in the codebase.
 

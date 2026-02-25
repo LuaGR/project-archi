@@ -10,7 +10,7 @@ An AI-native platform that automates architectural guidance based on the **AWS W
 | AI Engine      | Gemini 3 Flash                      |
 | Vector Store   | Supabase (PostgreSQL + pgvector)    |
 | Backend        | AWS Lambda (Node.js 24.x)           |
-| Frontend       | Next.js 15 + TanStack Query v5     |
+| Frontend       | Next.js 16 + TanStack Query v5     |
 | IaC            | AWS CDK                             |
 | Testing        | Vitest + Playwright                 |
 | Monorepo       | Turborepo                           |
@@ -48,7 +48,7 @@ npm run format
 project-archi/
 ├── apps/
 │   ├── api/          # AWS Lambda backend (Hexagonal Architecture)
-│   └── web/          # Next.js 15 frontend
+│   └── web/          # Next.js 16 frontend
 ├── packages/
 │   ├── infra/        # AWS CDK stacks & constructs
 │   ├── shared-schemas/ # Zod schemas shared between frontend & backend

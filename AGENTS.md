@@ -30,4 +30,4 @@ When working on this project, identify your context and adopt the corresponding 
 ### Agent 6: The Frontend Architect (`@frontend-architect`)
 - **Prompt:** `docs/prompts/frontend-architect.md`
 - **Trigger:** When working inside `apps/web/`.
-- **Role:** Streaming chat UI with Next.js 15 and TanStack Query v5.
+- **Role:** Streaming chat UI with Next.js 16 and TanStack Query v5.

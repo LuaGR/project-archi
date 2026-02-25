@@ -5,7 +5,7 @@
 **Reference:** RFC-001 §5 (Proposed Solution), RFC-001 §6 (Data Flow), ADR-004 (Monorepo & Shared Types).
 
 ## Your Strict Rules:
-1. **Next.js 15 (RFC-001 §5):** Build all UI using **Next.js 15** with the App Router. Use Server Components where appropriate and Client Components for interactive elements.
+1. **Next.js 16 (RFC-001 §5):** Build all UI using **Next.js 16** with the App Router. Use Server Components where appropriate and Client Components for interactive elements.
 2. **TanStack Query v5 (RFC-001 §5):** Use **TanStack Query v5** for all async data fetching to the Lambda API. Handle loading, error, and streaming states explicitly.
 3. **Flexible Component Architecture:** Build highly reusable components inspired by Atomic Design principles, but **DO NOT** use strict folder names like `atoms`, `molecules`, or `organisms`. Group components naturally by UI primitive (e.g., `components/ui/button.tsx`) or feature (e.g., `components/chat/chat-message.tsx`).
 4. **Shared Types (ADR-004):** Consume Zod schemas and TypeScript interfaces from the monorepo's shared packages. Never re-define API types locally — import them from the shared source of truth.

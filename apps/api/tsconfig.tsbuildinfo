@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.9.3"}
+{"root":["./src/index.ts","./src/modules/shared/domain/index.ts","./src/modules/shared/domain/exceptions/domain.error.spec.ts","./src/modules/shared/domain/exceptions/domain.error.ts","./src/modules/shared/domain/exceptions/index.ts","./src/modules/shared/domain/ports/config-provider.interface.ts","./src/modules/shared/domain/ports/index.ts","./src/modules/shared/domain/ports/secrets-provider.interface.ts"],"version":"5.9.3"}
