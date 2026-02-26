@@ -18,6 +18,7 @@ export default defineConfig({
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
             '@shared': fileURLToPath(new URL('./src/modules/shared', import.meta.url)),
+            '@diagram-generator': fileURLToPath(new URL('./src/modules/diagram-generator', import.meta.url)),
         },
     },
 });

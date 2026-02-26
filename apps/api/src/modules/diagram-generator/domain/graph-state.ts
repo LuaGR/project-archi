@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { StateSchema } from '@langchain/langgraph';
 
 /**
  * The shared state object flowing through every node of the LangGraph agentic loop.
@@ -7,10 +8,13 @@ import { z } from 'zod';
  * `iterationCount` is capped at 3 to prevent infinite self-correction loops (Risk R4).
  * `validationError` feeds the previous failure back into the next LLM prompt so the
  * model can self-correct rather than repeating the same mistake.
+ *
+ * Uses StateSchema — the recommended LangGraph v1.x API for defining state.
+ * All fields are "last-write-wins" (no custom reducers needed).
  */
-export const graphStateSchema = z.object({
-    userPrompt: z.string(),
-    diagramType: z.enum(['architecture', 'sequence', 'flowchart']),
+export const GraphStateSchema = new StateSchema({
+    userPrompt: z.string().default(''),
+    diagramType: z.enum(['architecture', 'sequence', 'flowchart']).default('architecture'),
     retrievedContext: z.string().default(''),
     generatedMermaidCode: z.string().default(''),
     validationStatus: z.enum(['pending', 'valid', 'invalid']).default('pending'),
@@ -18,4 +22,8 @@ export const graphStateSchema = z.object({
     validationError: z.string().optional(),
 });
 
-export type GraphState = z.infer<typeof graphStateSchema>;
+/** Full state type — what nodes receive. */
+export type GraphState = typeof GraphStateSchema.State;
+
+/** Update type — what nodes return (all keys optional). */
+export type GraphStateUpdate = typeof GraphStateSchema.Update;

@@ -10,6 +10,9 @@
             ],
             "@shared/*": [
                 "./src/modules/shared/*"
+            ],
+            "@diagram-generator/*": [
+                "./src/modules/diagram-generator/*"
             ]
         }
     },
