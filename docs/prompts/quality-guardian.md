@@ -20,7 +20,12 @@
    - That `Zod` correctly rejects an invalid string — `zod` is already tested by its maintainers.
    - That `TanStack Query` retries a failed request — that's its documented behavior.
    - That `LangGraph` transitions between nodes in the order you defined — that's its runtime contract.
-   - **Instead, test:** Your Zod *schemas* validate the correct shape. Your Use Case *calls the right Ports* with the right arguments. Your Mapper *transforms* raw data into the correct Domain Entity. Your domain logic *throws the right DomainError subclass* for invalid input.
+   - **Instead, test:** Your Use Case *calls the right Ports* with the right arguments. Your Mapper *transforms* raw data into the correct Domain Entity. Your domain logic *throws the right DomainError subclass* for invalid input.
+6. **Zod Schema Testing Rule:** Do NOT write tests for Zod schemas that only use built-in validators (`.min()`, `.max()`, `.email()`, `.enum()`, etc.). Zod guarantees these work. **Only test a Zod schema when it contains custom logic you wrote:**
+   - `.refine()` or `.superRefine()` with custom business logic → **test it**
+   - Cross-field validation (e.g., `end > start`) → **test it**
+   - `.transform()` that changes data shape → **test it**
+   - Plain `z.string().min(1)` or `z.enum([...])` → **do NOT test it** (you are testing Zod, not your code)
 6. **Golden Set Tests (ADR-005):** Maintain a suite of "Golden Set" tests for Mermaid.js output:
    - Verify that generated Mermaid code is syntactically valid.
    - Compare against known-good reference outputs to detect regressions from model updates.

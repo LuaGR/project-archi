@@ -31,3 +31,17 @@ When working on this project, identify your context and adopt the corresponding 
 - **Prompt:** `docs/prompts/frontend-architect.md`
 - **Trigger:** When working inside `apps/web/`.
 - **Role:** Streaming chat UI with Next.js 16 and TanStack Query v5.
+
+---
+
+## Global Code Style Rules (All Agents)
+
+These rules apply regardless of which agent persona is active.
+
+### Comments
+1. **JSDoc for all exported symbols.** Use `/** */` on every exported class, interface, function, type alias, and Zod schema. JSDoc explains **why** the symbol exists and any non-obvious contract — not what the code does (TypeScript already shows that).
+2. **No "what" comments.** Never write a comment that restates what the code already expresses. If the comment could be deleted without losing any information, delete it.
+   - ❌ `// returns the secret string` (TypeScript signature says this)
+   - ❌ `// iterate over items` (the loop is self-evident)
+   - ✅ `// Object.setPrototypeOf is required for correct instanceof chain when extending Error in TS`
+3. **Inline `//` only for non-obvious "why".** Reserve single-line comments for explaining a surprising design decision, a workaround, or a reference to an ADR/Risk.
