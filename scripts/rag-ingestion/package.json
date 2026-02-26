@@ -1,0 +1,19 @@
+{
+    "name": "@project-archi/rag-ingestion",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "ingest": "tsx ingest-aws-docs.ts",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@google/generative-ai": "^0.24.0",
+        "@supabase/supabase-js": "^2.49.0"
+    },
+    "devDependencies": {
+        "@project-archi/tsconfig": "*",
+        "tsx": "^4.19.0",
+        "vitest": "^3.2.0"
+    }
+}
