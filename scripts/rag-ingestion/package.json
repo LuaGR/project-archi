@@ -9,7 +9,8 @@
     },
     "dependencies": {
         "@google/generative-ai": "^0.24.0",
-        "@supabase/supabase-js": "^2.49.0"
+        "@supabase/supabase-js": "^2.49.0",
+        "pdf-parse": "^2.4.5"
     },
     "devDependencies": {
         "@project-archi/tsconfig": "*",

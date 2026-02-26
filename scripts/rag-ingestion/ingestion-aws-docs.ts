@@ -1,7 +1,11 @@
+import { loadPdfBySections } from './loaders/pdf-loader.js';
 import { loadMarkdownFiles } from './loaders/markdown-loader.js';
 import { chunkDocument } from './chunker.js';
 import { embedChunks } from './embedder.js';
 import { storeChunks } from './store.js';
+import { readdirSync } from 'node:fs';
+
+const DATA_DIR = './data';
 
 async function main() {
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -13,9 +17,24 @@ async function main() {
     }
 
     console.log('📄 Loading documents...');
-    const docs = await loadMarkdownFiles('./data/aws-well-architected');
 
-    console.log(`📦 Chunking ${docs.length} documents...`);
+    const files = readdirSync(DATA_DIR);
+    const pdfFiles = files.filter((f) => f.endsWith('.pdf'));
+    const hasMdDir = files.includes('aws-well-architected');
+
+    // Load from PDF files and/or markdown directory
+    const docs = [
+        ...(await Promise.all(pdfFiles.map((f) => loadPdfBySections(`${DATA_DIR}/${f}`)))).flat(),
+        ...(hasMdDir ? await loadMarkdownFiles(`${DATA_DIR}/aws-well-architected`) : []),
+    ];
+
+    if (docs.length === 0) {
+        throw new Error(`No documents found in ${DATA_DIR}/. Place .pdf files or markdown files in ${DATA_DIR}/aws-well-architected/`);
+    }
+
+    console.log(`   Found ${docs.length} document sections`);
+
+    console.log('📦 Chunking...');
     const chunks = docs.flatMap((doc) => chunkDocument(doc));
     console.log(`   Created ${chunks.length} chunks`);
 
@@ -37,4 +56,7 @@ async function main() {
     console.log(`✅ Ingested ${embedded.length} chunks successfully`);
 }
 
-main().catch(console.error);
+main().catch((err) => {
+    console.error('❌ Ingestion failed:', err.message);
+    process.exit(1);
+});
